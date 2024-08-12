@@ -10,18 +10,18 @@ def about(request):
     return render(request, 'about.html')
 
 def password(request):
-
-    def generate_secure_password(length, digits, letters, special_chars):
-        """Generates a secure random password."""
-        characters = ""
-        if digits:
-            characters += string.digits
-        if letters:
-            characters += string.ascii_letters
-        if special_chars:
-            characters += string.punctuation
-        if not characters:
-            raise ValueError("No character types selected for password generation.")
+    if request.method == "POST":
+        def generate_secure_password(length, digits, letters, special_chars):
+            """Generates a secure random password."""
+            characters = ""
+            if digits:
+                characters += string.digits
+            if letters:
+                characters += string.ascii_letters
+            if special_chars:
+                characters += string.punctuation
+            if not characters:
+                raise ValueError("No character types selected for password generation.")
 
         return ''.join(secrets.choice(characters) for _ in range(length))
 

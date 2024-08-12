@@ -1,0 +1,8 @@
+{% extends 'base.html' %}
+{% block content %}
+<h1>Your password is: </h1>
+<form method="GET" action="{% url 'password' %}">
+    <input type="submit" value="Show password">
+    </form>  
+    <!-- {% csrf_token %} -->
+{%endblock%}
